@@ -239,8 +239,46 @@ class Window(QWidget):
             painter.end()
 
 
-    def FCFS(self):
-        pass
+        def FCFS(self):
+
+		print("Enter the number of processess: ")
+		numberOfProcess=int(input())
+		processes=[]
+		for i in range(0,numberOfProcess):
+ 			processes.insert(i,i+1)
+ 
+		#Input Burst time of every process
+		print("\nEnter the burst time of the processes: \n")
+		burstTime=list(map(int, raw_input().split()))
+ 
+		#Input Priority of every process
+		print("\nEnter the priority of the processes: \n")
+		priority=list(map(int, raw_input().split()))
+
+ 
+		#Sorting processes burst time, on the basis of their priority
+		for i in range(0,len(priority)-1):
+ 			for j in range(0,len(priority)-i-1):
+  				if(priority[j]>priority[j+1]):
+   					swap=priority[j]
+   					priority[j]=priority[j+1]
+   					priority[j+1]=swap
+ 
+   					swap=burstTime[j]
+   					burstTime[j]=burstTime[j+1]
+   					burstTime[j+1]=swap
+ 
+   					swap=processes[j]
+   					processes[j]=processes[j+1]
+   					processes[j+1]=swap
+ 
+
+
+		print("\n")
+		print("Process\t  Burst Time\t  Priority\t")
+		for i in range(0,numberOfProcess):
+ 			print(str(processes[i])+"\t\t"+str(burstTime[i])+"\t\t"+str(priority[i]))
+ 			print("\n")
     def RR(self):
         pass
     
