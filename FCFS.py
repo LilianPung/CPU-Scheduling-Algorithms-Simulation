@@ -13,7 +13,7 @@ def FCFS(self, numberOfProcess, processLabel, arrivalTime, startingTime, burstTi
 numberOfProcess=[]
 turnAroundTime = []
 waitingTime = []
-#processList = []
+processes = []
 
 
  
