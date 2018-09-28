@@ -240,7 +240,57 @@ class Window(QWidget):
 
 
     def FCFS(self):
-        pass
+
+		numberOfProcess =self.numberOfProcess
+		#processLabel =self.processLabel 
+		#arrivalTime =self.arrivalTime 
+		#startingTime =self.startingTime 
+		burstTime = self.trueBurstTime 
+		waitingTime = self.waitingTime 
+		turnAroundTime = self.turnAroundTime 	
+		priority = self.priority 
+		processes= self.trueSequence
+ 	
+		numberOfProcess = []
+		processes=[]
+
+		turnAroundTime=[]
+		waitingTime=[]
+ 
+#Sorting processes burst time, on the basis of their priority
+		for i in range(0,len(priority)-1):
+ 			for j in range(0,len(priority)-i-1):
+  				if(priority[j]>priority[j+1]):
+   					swap=priority[j]
+   					priority[j]=priority[j+1]
+   					priority[j+1]=swap
+ 
+   					swap=burstTime[j]
+   					burstTime[j]=burstTime[j+1]
+   					burstTime[j+1]=swap
+ 
+   					swap=processes[j]
+   					processes[j]=processes[j+1]
+   					processes[j+1]=swap
+ 
+		waitingTime.insert(0,0)
+		turnAroundTime.insert(0,burstTime[0])
+ 
+#Calculating of waiting time and Turn Around Time of each process
+		for i in range(1,len(processes)):
+			waitingTime.insert(i,waitingTime[i-1]+burstTime[i-1])
+			turnAroundTime.insert(i,waitingTime[i]+burstTime[i])
+ 
+#calculating average waiting time and average turn around time
+		avgWaitingTime=0
+		avgTurnAroundTime=0
+		for i in range(0,len(processes)):
+ 			avgWaitingTime=avgWaitingTime+waitingTime[i]
+ 			avgTurnAroundTime=avgTurnAroundTime+turnAroundTime[i]
+		avgWaitingTime=float(avgWaitingTime)/n
+		avgWaitingTime=float(avgTurnAroundTime)/n
+
+
     def RR(self):
         pass
     
