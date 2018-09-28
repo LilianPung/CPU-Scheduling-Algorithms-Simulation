@@ -242,6 +242,33 @@ class Window(QWidget):
 
 
     def FCFS(self):
+        print("Enter the number of processess: ")
+        n=int(input())
+        processes=[]
+        for i in range(0,n):
+            processes.insert(i,i+1)
+
+        print("Enter the burst time of the processes: \n")
+        burstTime=[]
+        burstTime=list(map(int, raw_input().split()))
+
+        print("Enter the arrival time of the processes: \n")
+        at=[]
+        at=list(map(int, raw_input().split()))
+        at.sort()
+
+        print("Enter the priority of the processes: \n")
+        priority=[]
+        priority=list(map(int, raw_input().split()))
+       
+
+        processes.sort()
+
+        print("\n")
+        print("Process\t  Burst Time\t  Arrival Time\t  Priority\t")
+        for i in range(0,n):
+            print(str(processes[i])+"\t\t"+str(burstTime[i])+"\t\t"+str(at[i])+"\t\t"+str(priority[i]))
+
         processes = []
         for i in range(0,len(priority)-1):
             for j in range(0,len(priority)-i-1):
